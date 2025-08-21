@@ -23,14 +23,16 @@ def initialize_camera():
     if not camera_initialized:
         try:
             camera = Picamera2()
-            camera.configure("preview")
+            #camera.configure("preview")
             config = camera.create_preview_configuration(
-                main={"size": (1280, 1024)}  # Set desired resolution (e.g., 1280x720)
+                main={"size": (2592, 1944)}  # Set desired resolution (e.g., 1280x720)
             )
+            camera.configure(config)
+
             # Set manual exposure time and disable auto exposure
             camera.set_controls({
-                "ExposureTime": 20000,  # 20 ms exposure
-                "AeEnable": True      # Disable auto exposure
+            #    "ExposureTime": 20000,  # 20 ms exposure
+                "AeEnable": True      # Enable auto exposure
             })
 
             camera.start()
